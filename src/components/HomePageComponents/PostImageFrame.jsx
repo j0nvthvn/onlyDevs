@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useImageExtractColor } from "../../hooks/useImageExtractColor";
 
-export const PostImageFrame = () => {
-  const [bgColor, setBgColor] = useState("#e5e7eb");
-  
+export const PostImageFrame = ({ src }) => {
+  const imgRef = useRef(null);
+  const bgColor = useImageExtractColor(imgRef, src);
+
   return (
-    <div className="rounded-lg overflow-hidden flex items-center justify-center max-h-[500px] bg-amber-600">
+    <div className="rounded-lg overflow-hidden flex items-center justify-center max-h-[500px]" style={{backgroundColor:bgColor}}>
       <img
-        src="https://images.unsplash.com/photo-1590099914662-a76f2f83b802?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ref={imgRef}
+        src={src}
+        alt="alterno"
+        crossOrigin="anonymous"
         className="object-contain max-h-[500px]"
       />
     </div>

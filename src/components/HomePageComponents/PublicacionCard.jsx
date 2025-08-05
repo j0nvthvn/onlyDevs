@@ -22,7 +22,17 @@ export const PublicacionCard = () => {
       <div className="mt-3">
         <p className="mb-2">titulo</p>
         <div>
-            <PostImageFrame />
+            <PostImageFrame  src={"https://www.shutterstock.com/shutterstock/photos/2327536179/display_1500/stock-vector-son-goku-or-goku-in-dragon-ball-created-on-july-in-cirebon-west-java-indonesia-2327536179.jpg"} />
+        </div>
+        <div className="flex justify-between mt-4">
+          <button>
+            <Icon icon="mdi:heart-outline" className="text-3xl p-1 rounded-full text-gray-400 hover:bg-[rgba(78,184,233,0.2)] cursor-pointer" />
+          </button>
+          <button className="flex items-center gap-2 cursor-pointer">
+            <Icon icon="mdi:comment-outline" className="text-3xl p-1 rounded-full text-gray-400 hover:bg-[rgba(78,184,233,0.2)] cursor-pointer" />
+            <span className="text-xs md:text-sm text-gray-400">Comentar</span>
+          </button>
+
         </div>
       </div>
     </div>
