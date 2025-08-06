@@ -1,11 +1,19 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import logo from "../assets/logoonlydevs.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useGenerarCodigosAleatorios } from "../hooks/useGenerarCodigosAleatorios";
+import { useAuthStore } from "../store/AuthStore";
 export const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { setCredenciales } = useAuthStore();
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  useEffect(() => {
+    const response = useGenerarCodigosAleatorios();
+    const correoCompleto = response + "gmail.com";
+    setCredenciales({ email: correoCompleto, password: response });
+  }, []);
   return (
     <div className="flex h-screen w-full">
       {/* Lado izquierdo -Banner azul */}
@@ -43,6 +51,7 @@ export const LoginPage = () => {
             <div className="relative mb-4">
               <input
                 placeholder="Password"
+                type={showPassword ? "text" : "password"}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00aff0]"
               />
               <button
@@ -70,8 +79,7 @@ export const LoginPage = () => {
             <a href="#" className="text-[#00aff0]">
               {" "}
               Política de privacidad
-            </a>
-            {" "}
+            </a>{" "}
             y confirmas que tienes al menos 18 años.
           </div>
           <div className="mt-6 text-center">
