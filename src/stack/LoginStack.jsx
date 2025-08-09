@@ -15,8 +15,8 @@ export const useCrearUsuarioYSesionMutate = () => {
     onError: (error) => {
       toast.error(`Error: ${error.message}`);
     },
-    onSuccess:()=>{
-        toast.success("Ok, todo salió bien")
-    }
+    onSuccess: () => {
+      toast.success("Ok, todo salio bien")
+    },
   });
 };

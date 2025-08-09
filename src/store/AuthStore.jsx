@@ -9,7 +9,7 @@ export const useAuthStore = create((set) => ({
       email: p.email,
       password: p.password,
     });
-    return data;
+    return data.user;
   },
 }));
 
@@ -22,11 +22,13 @@ export const useSubscription = create((set) => {
   supabase.auth.getSession().then(({ data: { session } }) => {
     if (session?.user) {
       set({ user: session.user });
+      console.log("user", session.user);
     }
   });
   supabase.auth.onAuthStateChange((_event, session) => {
     if (session?.user) {
       set({ user: session.user });
+      console.log("user", session.user);
     } else {
       set({ user: null });
     }

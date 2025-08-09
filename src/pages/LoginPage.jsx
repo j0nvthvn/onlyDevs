@@ -16,7 +16,7 @@ export const LoginPage = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  const {handleSubmit} = useForm()
+  const { handleSubmit } = useForm();
   const { isPending, mutate } = useCrearUsuarioYSesionMutate();
   useEffect(() => {
     const response = useGenerarCodigosAleatorios();
@@ -53,7 +53,7 @@ export const LoginPage = () => {
             Iniciar sesión{" "}
             <span className="text-[#0091EA] text-xl">(modo invitado)</span>
           </h1>
-          <form onSubmit={handleSubmit(mutate) }>
+          <form onSubmit={handleSubmit(mutate)}>
             <div className="mb-4">
               <input
                 placeholder="Email"
